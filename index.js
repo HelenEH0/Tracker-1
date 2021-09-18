@@ -127,9 +127,9 @@ function updateState()
         var date = new Date(state.transactions[i].date);
         if(date.getMonth() +1 == selectedMonth)
         {
-            var monbal = { bal: income - expense};
-            state.monthlybalance.push(monbal);
-            console.log(monthlybalance[i]);
+            // var monbal = { bal: income - expense};
+            // state.monthlybalance.push(monbal);
+            // console.log(monthlybalance[i]);
         }
     }
     balance = income - expense;
