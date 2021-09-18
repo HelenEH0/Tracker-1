@@ -4,6 +4,9 @@ var state = {
     expense: 100,
     transactions: [
         
+    ],
+    monthlybalance: [
+        
     ]
 }
 
@@ -18,6 +21,7 @@ var nameInputEl = document.querySelector('#name');
 var amountInputEl = document.querySelector('#amount');
 var dateInputEl = document.querySelector('#date');
 var selectedMonth;
+var monthlybalanceEl = document.querySelector('#monthlybalance');
 
 function init() 
 {
@@ -88,8 +92,10 @@ function onDeleteClick(event)
 {
     var id = parseInt(event.target.getAttribute('data-id'));
     var deleteIndex;
-    for (var i = 0; i < state.transactions.length; i++) {
-        if (state.transactions[i].id === id) {
+    for (var i = 0; i < state.transactions.length; i++) 
+    {
+        if (state.transactions[i].id === id) 
+        {
             deleteIndex = i;
             break;
         }
@@ -118,8 +124,14 @@ function updateState()
         {
             expense += item.amount;
         }
+        var date = new Date(state.transactions[i].date);
+        if(date.getMonth() +1 == selectedMonth)
+        {
+            var monbal = { bal: income - expense};
+            state.monthlybalance.push(monbal);
+            console.log(monthlybalance[i]);
+        }
     }
-
     balance = income - expense;
 
     state.balance = balance;
@@ -141,8 +153,14 @@ function render()
 
     transactionsEl.innerHTML = '';
 
-    for (var i = 0; i < state.transactions.length; i++) {
+    for (var i = 0; i < state.transactions.length; i++) 
+    {
         var date = new Date(state.transactions[i].date);
+        if(date.getMonth() + 1 == selectedMonth)
+        {
+            console.log('unda');
+            // monthlybalanceEl.innerHTML = `$${state.monthlybalance[selectedMonth - 1]}`;
+        }
         if(date.getMonth() + 1 == selectedMonth)
         {
             item = state.transactions[i];
