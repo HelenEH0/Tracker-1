@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Expense Tracker</title>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="app">
+            <h1>Expense Tracker</h1>
+            <label for="selectedmonth">Choose a month:</label>
+            <select onchange="onMonthChanged()" id="selectedmonth" class="months" name="selectedmonth">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+            </select>
+            <div class="balance-container">
+                <h2>Your Balance</h2>
+                <div id="balance"></div>
+            </div>
+
+            <div class="cashflow-container">
+                <div class="income-container">
+                    <h2>Income</h2>
+                    <div id="income"></div>
+                </div>
+                <div class="expense-container">
+                    <h2>Expense</h2>
+                    <div id="expense"></div>
+                </div>
+            </div>
+
+            <div class="transaction-container">
+                <h2>Transaction History</h2>
+                <ul id="transaction"></ul>
+            </div>
+
+            <div class="form-container">
+                <h2>Add new transaction</h2>
+                <form onsubmit="return false;">
+                    <label for="name">Name</label>
+                    <input id="name" type="text">
+                    <label for="amount">Amount</label>
+                    <input id="amount" type="number">
+                    <label for="date">Date</label>
+                    <input id="date" type="date">
+                    <button id="incomeBtn">Add Income</button>
+                    <button id="expenseBtn">Add Expense</button>
+                </form>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
