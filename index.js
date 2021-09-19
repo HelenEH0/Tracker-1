@@ -5,9 +5,9 @@ var state = {
     transactions: [
         
     ],
-    monthlybalance: [
-        
-    ]
+    monthlybalance: 0,
+    monthlyexpense:0,
+    monthlyincome:0
 }
 
 
@@ -22,6 +22,8 @@ var amountInputEl = document.querySelector('#amount');
 var dateInputEl = document.querySelector('#date');
 var selectedMonth;
 var monthlybalanceEl = document.querySelector('#monthlybalance');
+var monthlyinclomeEl = document.querySelector('#monthlyincome');
+var monthlyexpenseEl = document.querySelector('#monthlyexpense');
 
 function init() 
 {
@@ -124,20 +126,12 @@ function updateState()
         {
             expense += item.amount;
         }
-        var date = new Date(state.transactions[i].date);
-        if(date.getMonth() +1 == selectedMonth)
-        {
-            // var monbal = { bal: income - expense};
-            // state.monthlybalance.push(monbal);
-            // console.log(monthlybalance[i]);
-        }
     }
     balance = income - expense;
 
     state.balance = balance;
     state.income = income;
     state.expense = expense;
-
     localStorage.setItem('expenseTrackerState', JSON.stringify(state))
 
     render();
@@ -152,21 +146,28 @@ function render()
     var transactionEl, containerEl, amountEl, item, btnEl;
 
     transactionsEl.innerHTML = '';
+    var monbal = 0;
+    var moninc = 0;
+    var monexp = 0;
 
     for (var i = 0; i < state.transactions.length; i++) 
     {
         var date = new Date(state.transactions[i].date);
         if(date.getMonth() + 1 == selectedMonth)
         {
-            console.log('unda');
-            // monthlybalanceEl.innerHTML = `$${state.monthlybalance[selectedMonth - 1]}`;
-        }
-        if(date.getMonth() + 1 == selectedMonth)
-        {
             item = state.transactions[i];
+            if(item.type === 'income')
+            {
+                monbal += item.amount;
+                moninc += item.amount;
+            }
+            else
+            {
+                monbal -= item.amount;
+                monexp += item.amount;
+            }
             transactionEl = document.createElement('li');
             transactionEl.append(item.name);
-    
             transactionsEl.appendChild(transactionEl);
     
             containerEl = document.createElement('div');
@@ -191,6 +192,12 @@ function render()
             transactionEl.appendChild(containerEl);
         }
     }
+    state.monthlybalance = parseInt(monbal);
+    state.monthlyincome = parseInt(moninc);
+    state.monthlyexpense = parseInt(monexp);
+    monthlybalanceEl.innerHTML = `$${state.monthlybalance}`;
+    monthlyinclomeEl.innerHTML = `$${state.monthlyincome}`;
+    monthlyexpenseEl.innerHTML = `$${state.monthlyexpense}`;
 }
 
 init();

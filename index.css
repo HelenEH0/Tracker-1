@@ -45,16 +45,29 @@ h2 {
     padding-left: 20px;
 }
 
-#income, #expense {
+#income, #expense, #monthlyincome, #monthlyexpense {
     font-size: 1.3em;
 }
 
 #income {
     color: var(--income);
+    text-align: right;
 }
 
 #expense {
     color: var(--expense);
+}
+
+#monthlyincome {
+    color: var(--income);
+    text-align: right;
+    margin: auto;
+}
+
+#monthlyexpense {
+    color: var(--expense);
+    text-align: left;
+    margin: auto;
 }
 
 .transaction-container {
