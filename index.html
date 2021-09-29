@@ -12,7 +12,13 @@
     </head>
     <body>
         <div class="app">
-            <h1>EXPENSE TRACKER</h1>
+            <section class="heading" id="heading">
+                <div class="inner">
+                    <h1>EXPENSE TRACKER</h1>
+                    <img src="Assets/budget.jpg">
+                </div>
+            </section>
+            
             <label for="selectedmonth">Choose a month:</label>
             <select onchange="onMonthChanged()" id="selectedmonth" class="months" name="selectedmonth">
             <option value="1">January</option>
@@ -36,29 +42,30 @@
                 <h2>Your monthly Balance</h2>
                 <div id="monthlybalance"></div>
             </div>
-            <div class="cashflow-container">
-                <div class="income-container">
-                    <h2>Income</h2>
-                    <div id="income"></div>
+            
+                <div class="cashflow-container">
+                    <div class="income-container">
+                        <h2>Income</h2>
+                        <div id="income"></div>
+                    </div>
+                    <div class="expense-container">
+                        <h2>Expense</h2>
+                        <div id="expense"></div>
+                    </div>
                 </div>
-                <div class="expense-container">
-                    <h2>Expense</h2>
-                    <div id="expense"></div>
+                <div class="cashflow-container">
+                    <div class="income-container">
+                        <h2>Monthly Income</h2>
+                        <div id="monthlyincome"></div>
+                    </div>
+                    <div class="expense-container">
+                        <h2>Monthly Expense</h2>
+                        <div id="monthlyexpense"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="cashflow-container">
-                <div class="income-container">
-                    <h2>Monthly Income</h2>
-                    <div id="monthlyincome"></div>
-                </div>
-                <div class="expense-container">
-                    <h2>Monthly Expense</h2>
-                    <div id="monthlyexpense"></div>
-                </div>
-            </div>
-
+            
             <div class="transaction-container">
-                <h2>Transaction History</h2>
+                <h2>TRANSACTION HISTORY</h2>
                 <ul id="transaction"></ul>
             </div>
 
