@@ -14,11 +14,15 @@ body {
 }
 
 
-.heading .inner img{
+.heading .inner {
 display: table;
 text-align: center;
-height: 100vh;
-padding-top:10vh;
+height: 70vh;
+padding-top:50px;
+
+}
+
+img{
 width: 500px;
 height: auto;
 }
